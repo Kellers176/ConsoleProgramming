@@ -32,13 +32,13 @@ character.src = "images/character.png";
 function SetBackground()
 {
 	//document.getElementById("myCanvas").style.background = "url('images/environment.jpg')";
-	var background = new Image();
-	background.src = "images/environment.jpg";
-	background.onload = function() {
-		game_canvas.width = background.width;
-  		game_canvas.height = background.height;
-		ctx.imageSmoothingEnabled = true;
-    	ctx.drawImage(background, 0, 0, game_canvas.width, game_canvas.height);}
+	//var background = new Image();
+	//background.src = "images/environment.jpg";
+	//background.onload = function() {
+		//game_canvas.width = background.width;
+  		//game_canvas.height = background.height;
+		//ctx.imageSmoothingEnabled = true;
+    	//ctx.drawImage(background, 0, 0, game_canvas.width, game_canvas.height);}
 }
 
 function updateFrame()
@@ -60,7 +60,6 @@ function drawImage()
     //updater and render image
 	updateFrame();
 	ctx.drawImage(character, srcX, srcY, width, height, x, y, width, height);
-    
 }
 
 
