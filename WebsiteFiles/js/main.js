@@ -59,7 +59,8 @@ function drawImage()
 {
     //updater and render image
 	updateFrame();
-	ctx.drawImage(character, srcX, srcY, width, height, x, y, width, height);
+	//ctx.drawImage(character, 0, 0, game_canvas.width, game_canvas.height);
+	ctx.drawImage(character, srcX, srcY, width, height, x, y, width * 0.4, height * 0.4);
 }
 
 
