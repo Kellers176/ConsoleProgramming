@@ -5,26 +5,30 @@
 
 	<link rel="stylesheet" href="css/style.css">
 
-    <style>
-        canvas {
-            background-image: url('images/environment.jpg');
-        }
-    </style>
+	<style>
+		canvas {
+			background-image: url('images/environment.jpg');
+		}
+	</style>
 
 </head>
 
 <body>
 	<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script>
-		//SetBackground();
-        drawImage();
-        
-        setInterval(function()
-        {
-	       drawImage();
-        }, 100);
-	</script>
-</body>
 
-</html>
+
+	<script type="text/javascript" src="js/main.js">
+	</script>
+	<script>
+		FixCanvasRes();
+		DrawScore();
+		CreateRoundedRectangle();
+		DrawTime();
+		/*setInterval(function() {
+			drawImage();
+		}, 100);*/
+	</script>
+
+
+
+</body></html>

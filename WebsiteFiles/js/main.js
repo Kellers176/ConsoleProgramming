@@ -26,41 +26,106 @@ var height = sheetHeight / rows;
 var game_canvas = document.getElementById("myCanvas");
 var ctx = game_canvas.getContext("2d");
 //the player character
-var character = new Image();
-character.src = "images/character.png";
 
-function SetBackground()
-{
-	//document.getElementById("myCanvas").style.background = "url('images/environment.jpg')";
-	//var background = new Image();
-	//background.src = "images/environment.jpg";
-	//background.onload = function() {
-		//game_canvas.width = background.width;
-  		//game_canvas.height = background.height;
-		//ctx.imageSmoothingEnabled = true;
-    	//ctx.drawImage(background, 0, 0, game_canvas.width, game_canvas.height);}
+var score = 0;
+var timer = 0;
+
+
+function GameLoop() {
+
 }
 
-function updateFrame()
+function FixCanvasRes()
 {
-    //calculate the current frame
-	currentFrame = ++currentFrame % cols; 
-	
-    //update the current frame
+	game_canvas.width = 1000; //horizontal resolution (?) - increase for better looking text
+	game_canvas.height = 500; //vertical resolution (?) - increase for better looking text
+	game_canvas.style.width = width; //actual width of canvas
+	game_canvas.style.height = height; //actual height of canvas
+}
+
+function DrawScore() {
+	ctx.font = '500 20pt Courier New';
+	ctx.fillStyle = "white";
+	ctx.fillText('Score: ', 20, 40);
+	ctx.fillText(score, 120, 40);
+}
+
+function DrawTime() {
+	CountdownTime();
+	ctx.font = '500 20pt Courier New';
+	ctx.fillStyle = "white";
+	ctx.fillText('Time: ', 850, 40);
+	ctx.fillText(timer, 940, 40);
+
+}
+
+//need to fix timer
+function CountdownTime()
+{
+	//alert("In function");
+    var sec = 90;
+    var mytimer = setInterval(function(){
+        //document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
+	timer = sec;
+}
+function ChangeScore(newNumber)
+{
+	score = newNumber;
+}
+
+function UpdateFrame() {
+	//calculate the current frame
+	currentFrame = ++currentFrame % cols;
+
+	//update the current frame
 	srcX = currentFrame * width;
 	srcY = trackRight * height;
-    
-    //clear the renderer
-    ctx.clearRect(x,y,width, height);
-	
+
+	//clear the renderer
+	ctx.clearRect(x, y, width, height);
 }
 
-function drawImage()
+function CreateRoundedRectangle()
 {
-    //updater and render image
-	updateFrame();
-	//ctx.drawImage(character, 0, 0, game_canvas.width, game_canvas.height);
-	ctx.drawImage(character, srcX, srcY, width, height, x, y, width * 0.4, height * 0.4);
+	RoundRect(10,10,980,480,20);
+}
+
+function RoundRect(x, y, w, h, radius)
+{
+  var r = x + w;
+  var b = y + h;
+  ctx.beginPath();
+  ctx.strokeStyle="white";
+  ctx.lineWidth="2";
+  ctx.moveTo(x+radius, y);
+  ctx.lineTo(r-radius, y);
+  ctx.quadraticCurveTo(r, y, r, y+radius);
+  ctx.lineTo(r, y+h-radius);
+  ctx.quadraticCurveTo(r, b, r-radius, b);
+  ctx.lineTo(x+radius, b);
+  ctx.quadraticCurveTo(x, b, x, b-radius);
+  ctx.lineTo(x, y+radius);
+  ctx.quadraticCurveTo(x, y, x+radius, y);
+  ctx.stroke();
 }
 
 
+function DrawImage() {
+	//updater and render image
+	var character = new Image();
+	character.src = "images/character.png";
+	updateFrame();
+	character.onload = function () {
+		character.width = width * 0.4;
+		character.height = height * 0.4;
+		ctx.imageSmoothingEnabled = false;
+		ctx.drawImage(character, srcX, srcY, width, height, x, y, character.width, character.height);
+
+	}
+	//ctx.drawImage(character, 0, 0, game_canvas.width, game_canvas.height);
+}
