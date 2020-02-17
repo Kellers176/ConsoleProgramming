@@ -28,11 +28,14 @@ var ctx = game_canvas.getContext("2d");
 //the player character
 
 var score = 0;
-var timer = 0;
+var timer = 90;
 
 
 function GameLoop() {
-
+	this.FixCanvasRes();
+	this.DrawScore();
+	this.CreateRoundedRectangle();
+	this.CountdownTime();
 }
 
 function FixCanvasRes()
@@ -50,28 +53,34 @@ function DrawScore() {
 	ctx.fillText(score, 120, 40);
 }
 
-function DrawTime() {
-	CountdownTime();
+function DrawTime(myTimer) {
+	//alert("in timer");
 	ctx.font = '500 20pt Courier New';
 	ctx.fillStyle = "white";
 	ctx.fillText('Time: ', 850, 40);
-	ctx.fillText(timer, 940, 40);
-
+	ctx.fillText(myTimer, 940, 40);
+	
 }
 
 //need to fix timer
 function CountdownTime()
 {
 	//alert("In function");
-    var sec = 90;
-    var mytimer = setInterval(function(){
+    var sec = timer;
+	DrawTime(sec);
+    var mytimer = setInterval(function CountdownTime(){
         //document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
         sec--;
+		timer = sec;
+		ctx.clearRect(940, 20, 40, 20);
+		DrawTime(timer);
         if (sec < 0) {
+			sec = 5;
+			alert("Seconds is 0");
             clearInterval(timer);
         }
     }, 1000);
-	timer = sec;
+	
 }
 function ChangeScore(newNumber)
 {
