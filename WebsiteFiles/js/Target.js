@@ -22,3 +22,15 @@ function DrawTarget()
         ctx.drawImage(target, 0, 0, width, height, positionX, positionY, target.width, target.height);
     }
 }
+
+function RespawnTarget()
+{
+    
+    
+}
+
+function CalculateArrowPos()
+{
+    
+    
+}
