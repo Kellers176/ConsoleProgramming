@@ -1,3 +1,4 @@
+//RENDERING ALL VARIABLES
 //Global variables
 //position fram will be drawn
 var x = 0;
@@ -30,12 +31,16 @@ var ctx = game_canvas.getContext("2d");
 var score = 0;
 var timer = 90;
 
+var characterWidth = 120;
+var characterHeight = 120;
 
-function GameLoop() {
+
+function RenderAll() {
 	this.FixCanvasRes();
 	this.DrawScore();
 	this.CreateRoundedRectangle();
 	this.CountdownTime();
+    this.DrawCharacter();
 }
 
 function FixCanvasRes()
@@ -124,6 +129,17 @@ function RoundRect(x, y, w, h, radius)
 }
 
 
+function DrawCharacter()
+{
+    var character = new Image();
+	character.src = "images/character.png";
+    character.onload = function () {
+        character.width = characterWidth;
+        character.height = characterHeight * 0.7;
+        ctx.imageSmoothingEnabled = true;
+        ctx.drawImage(character, 0, 0, 120, 120, 10, 400, character.width, character.height);
+    }
+} 
 function DrawImage() {
 	//updater and render image
 	var character = new Image();
