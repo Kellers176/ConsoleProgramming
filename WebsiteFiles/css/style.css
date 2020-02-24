@@ -16,6 +16,7 @@ canvas2 {
 	height: 100px;
 	width:  120px;
     position: absolute;
-    left: 20px;
+    left: 10px;
     top: 570px;
+    transform: rotate(-40deg);
 }

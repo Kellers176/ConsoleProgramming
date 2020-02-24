@@ -3,26 +3,31 @@
 
 <head>
 
-	<link rel="stylesheet" href="css/style.css">
+	<!--><link rel="stylesheet" href="css/style.css"></-->
 
-	<style>
-		canvas {
-			background-image: url('images/environment.jpg');
-        }
-	</style>
+	
     
-    <style>
-        canvas2 {
-			background-image: url('images/bowAndHands.png');
-		}
-    </style>
 
 </head>
 
 <body>
-    <canvas id="myCanvas" style="border:1px solid #000000;"></canvas> 
-    <!--><canvas2 id="myBowCanvas" style="border:1px solid #000000;"> </canvas2> <-->
-
+    <div id="canvasesdiv" style="position:absolute; width:800px; height:1000px">
+        <canvas id="myCanvas"
+                style="z-index: 1;
+                       position:absolute;
+                       left:0px;
+                       top:0px;
+                       background-image: url('images/environment.jpg');
+                       " height="800px" width="1000">
+        </canvas>
+        <canvas id="myBowCanvas"
+                    style="z-index: 2;
+                           position:absolute;
+                           left:0px;
+                           top:0px;
+                           " height="800px" width="1000px">
+        </canvas>
+    </div>
 	<script type="text/javascript" src="js/GameBackground.js">
 	</script>
 	<script>
