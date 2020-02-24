@@ -8,14 +8,20 @@
 	<style>
 		canvas {
 			background-image: url('images/environment.jpg');
-		}
+        }
 	</style>
+    
+    <style>
+        canvas2 {
+			background-image: url('images/bowAndHands.png');
+		}
+    </style>
 
 </head>
 
 <body>
-	<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
-
+    <canvas id="myCanvas" style="border:1px solid #000000;"></canvas> 
+    <!--><canvas2 id="myBowCanvas" style="border:1px solid #000000;"> </canvas2> <-->
 
 	<script type="text/javascript" src="js/GameBackground.js">
 	</script>
@@ -31,7 +37,11 @@
 	</script>
 	<script>
 		DrawCharacter();
-        DrawBow();
+	</script>
+     <script type="text/javascript" src="js/Bow.js">
+	</script>
+	<script>
+		RotateCanvas();
 	</script>
 
 

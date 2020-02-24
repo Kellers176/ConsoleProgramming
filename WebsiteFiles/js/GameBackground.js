@@ -37,6 +37,7 @@ function RenderAll() {
 	this.DrawScore();
 	this.CreateRoundedRectangle();
 	this.CountdownTime();
+
 }
 
 function FixCanvasRes()
@@ -104,6 +105,7 @@ function CreateRoundedRectangle()
 {
 	RoundRect(10,10,980,480,20);
 }
+
 
 function RoundRect(x, y, w, h, radius)
 {
