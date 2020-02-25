@@ -1,27 +1,10 @@
-//RENDERING ALL VARIABLES
-//Global variables
-//position fram will be drawn
-var x = 0;
-var y = 0;
-//where the frame currently is
-var srcX;
-var srcY;
-//Get the sheet width of the sprite sheet
-var sheetWidth = 864;
-var sheetHeight = 300;
-//the amount of rows and columns of the sprite sheet
-var cols = 8;
-var rows = 2;
-//how many frames in the sprite sheet
-var frameCount = 8;
-var currentFrame = 0;
-//position the character is facing by changing the row
-var trackLeft = 1;
-var trackRight = 0;
+//-----------------------------------------------------------------------------------------
+//variables
+var width = 120;
+var height = 120;
 
-//the width and the height of each sprite
-var width = sheetWidth / cols;
-var height = sheetHeight / rows;
+var positionX = 10;
+var positionY = 300;
 
 //reference the game canvas
 var game_canvas = document.getElementById("myCanvas");
@@ -31,30 +14,26 @@ var ctx = game_canvas.getContext("2d");
 var score = 0;
 var timer = 90;
 
-
+//-----------------------------------------------------------------------------------------
+//Render Function
 function RenderAll() {
 	this.FixCanvasRes();
 	this.DrawScore();
 	this.CreateRoundedRectangle();
 	this.CountdownTime();
-
+	this.DrawConstraint();
 }
 
-function FixCanvasRes()
-{
-	game_canvas.width = 1000; //horizontal resolution (?) - increase for better looking text
-	game_canvas.height = 500; //vertical resolution (?) - increase for better looking text
-	game_canvas.style.width = width; //actual width of canvas
-	game_canvas.style.height = height; //actual height of canvas
-}
-
+//-----------------------------------------------------------------------------------------
+//Draw Objects
+//Draw the Score
 function DrawScore() {
 	ctx.font = '500 20pt Courier New';
 	ctx.fillStyle = "white";
 	ctx.fillText('Score: ', 20, 40);
 	ctx.fillText(score, 120, 40);
 }
-
+//Draw the time 
 function DrawTime(myTimer) {
 	//alert("in timer");
 	ctx.font = '500 20pt Courier New';
@@ -63,7 +42,56 @@ function DrawTime(myTimer) {
 	ctx.fillText(myTimer, 940, 40);
 	
 }
+//Create a rounded rectangle around the play space
+function CreateRoundedRectangle()
+{
+	RoundRect(10,10,980,480,20);
+}
+function RoundRect(x, y, w, h, radius)
+{
+  var r = x + w;
+  var b = y + h;
+  ctx.beginPath();
+  ctx.strokeStyle="white";
+  ctx.lineWidth="2";
+  ctx.moveTo(x+radius, y);
+  ctx.lineTo(r-radius, y);
+  ctx.quadraticCurveTo(r, y, r, y+radius);
+  ctx.lineTo(r, y+h-radius);
+  ctx.quadraticCurveTo(r, b, r-radius, b);
+  ctx.lineTo(x+radius, b);
+  ctx.quadraticCurveTo(x, b, x, b-radius);
+  ctx.lineTo(x, y+radius);
+  ctx.quadraticCurveTo(x, y, x+radius, y);
+  ctx.stroke();
+}
 
+//Draw the constraing circle around the player
+function DrawConstraint()
+{
+	var constraint = new Image();
+	constraint.src = "images/ring.png";
+    constraint.onload = function () {
+        constraint.width = width;
+        constraint.height = height* 0.7;
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(constraint, 0, 0, width, height, 20, 320, constraint.width * 2, constraint.height * 2);
+    }
+	
+}
+
+//-----------------------------------------------------------------------------------------
+//Canvas stuff
+function FixCanvasRes()
+{
+	game_canvas.width = 1000; //horizontal resolution (?) - increase for better looking text
+	game_canvas.height = 500; //vertical resolution (?) - increase for better looking text
+	game_canvas.style.width = width; //actual width of canvas
+	game_canvas.style.height = height; //actual height of canvas
+}
+
+//-----------------------------------------------------------------------------------------
+//Updates
 //need to fix timer
 function CountdownTime()
 {
@@ -84,59 +112,9 @@ function CountdownTime()
     }, 1000);
 	
 }
+
 function ChangeScore(newNumber)
 {
 	score = newNumber;
 }
 
-function UpdateFrame() {
-	//calculate the current frame
-	currentFrame = ++currentFrame % cols;
-
-	//update the current frame
-	srcX = currentFrame * width;
-	srcY = trackRight * height;
-
-	//clear the renderer
-	ctx.clearRect(x, y, width, height);
-}
-
-function CreateRoundedRectangle()
-{
-	RoundRect(10,10,980,480,20);
-}
-
-
-function RoundRect(x, y, w, h, radius)
-{
-  var r = x + w;
-  var b = y + h;
-  ctx.beginPath();
-  ctx.strokeStyle="white";
-  ctx.lineWidth="2";
-  ctx.moveTo(x+radius, y);
-  ctx.lineTo(r-radius, y);
-  ctx.quadraticCurveTo(r, y, r, y+radius);
-  ctx.lineTo(r, y+h-radius);
-  ctx.quadraticCurveTo(r, b, r-radius, b);
-  ctx.lineTo(x+radius, b);
-  ctx.quadraticCurveTo(x, b, x, b-radius);
-  ctx.lineTo(x, y+radius);
-  ctx.quadraticCurveTo(x, y, x+radius, y);
-  ctx.stroke();
-}
-
-function DrawImage() {
-	//updater and render image
-	var character = new Image();
-	character.src = "images/character.png";
-	updateFrame();
-	character.onload = function () {
-		character.width = width * 0.4;
-		character.height = height * 0.4;
-		ctx.imageSmoothingEnabled = false;
-		ctx.drawImage(character, srcX, srcY, width, height, x, y, character.width, character.height);
-
-	}
-	//ctx.drawImage(character, 0, 0, game_canvas.width, game_canvas.height);
-}

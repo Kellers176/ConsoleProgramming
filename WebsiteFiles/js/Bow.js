@@ -14,7 +14,7 @@ function RotateCanvas()
 {
     var bow = new Image();
     bow.src = "images/bowAndHands.png";
-    //rotate
+    //rotate then move back to original position
     ctx2.translate(cx,cy);
     ctx2.rotate( (Math.PI / 180) * angle);
     ctx2.translate(-cx,-cy);
@@ -27,8 +27,6 @@ function RotateCanvas()
         ctx2.drawImage(bow, 0, 0, 120, 120, 10, 670, bow.width, bow.height);
         //ctx2.rotate(40);
     }
-    
-    //ctx2.rotate(20/20);
-   // ctx2.rotate(4* Math.PI / 180);
+
 
 }
