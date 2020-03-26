@@ -3,20 +3,39 @@
 
 <head>
 
-	<link rel="stylesheet" href="css/style.css">
+	<!--><link rel="stylesheet" href="css/style.css"></-->
 
-	<style>
-		canvas {
-			background-image: url('images/environment.jpg');
-		}
-	</style>
+	
+    
 
 </head>
 
 <body>
-	<canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
-
-
+    <div id="canvasesdiv" style="position:absolute; width:800px; height:600px">
+        <canvas id="myCanvas"
+                style="z-index: 1;
+                        position:absolute;
+                        left:0px;
+                        top:0px;
+                        background-image: url('images/environment.jpg');"
+                        height ="800px" 
+                        width ="1000px">
+        </canvas>
+        <canvas id="myBowCanvas"
+                    style="z-index: 2;
+                           position:absolute;
+                           left:0px;
+                           top:0px;
+                           " height="800px" width="1000px">
+        </canvas>
+		<canvas id="myArrowCanvas"
+                    style="z-index: 2;
+                           position:absolute;
+                           left:0px;
+                           top:0px;
+                           " height="800px" width="1000px">
+        </canvas>
+    </div>
 	<script type="text/javascript" src="js/GameBackground.js">
 	</script>
 	<script>
@@ -31,8 +50,24 @@
 	</script>
 	<script>
 		DrawCharacter();
-        DrawBow();
 	</script>
 
+	 <script type="text/javascript" src="js/Mouse.js">
+	</script>
+	<script>
+		GetMouseCoords();
+	</script>
+         <script type="text/javascript" src="js/Bow.js">
+	</script>
+	<script>
+		RotateCanvas();
+	</script>
+    	<script type="text/javascript" src="js/Arrow.js">
+	</script>
+	<script>
+		//RotateArrow();
+		//DrawArrow();
+		ShootArrow();
+	</script>
 
 </body></html>
