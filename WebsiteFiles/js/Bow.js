@@ -3,7 +3,7 @@ layer2 = document.getElementById("myBowCanvas");
 ctx2 = layer2.getContext("2d");
 
 var x = 10;
-var y = 660;
+var y = 670;
 
 var cx = x + 0.5 * 120;
 var cy = y + 0.5 * 120;
@@ -32,7 +32,7 @@ function RotateCanvas()
         bow.width = characterWidth;
         bow.height = characterHeight * 0.7;
         ctx2.imageSmoothingEnabled = true;
-        ctx2.drawImage(bow, 0, 0, 120, 120, 10, 670, bow.width, bow.height);
+        ctx2.drawImage(bow, 0, 0, 120, 120, x, y, bow.width, bow.height);
         //ctx2.rotate(40);
     }
 
