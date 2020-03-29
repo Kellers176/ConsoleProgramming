@@ -42,7 +42,6 @@ function DrawArrow()
         arrow.height = characterHeight * 0.7;
         ctx3.imageSmoothingEnabled = true;
         ctx3.drawImage(arrow, 0, 0, 120, 120, positionX, positionY, arrow.width, arrow.height);
-		Console.log(positionX);
         //ctx2.rotate(40);
     }
 }
@@ -56,6 +55,16 @@ function ShootArrow()
 		ctx3.clearRect(positionX, positionY, 120, 120);
     }, 10);
 	
+	if(positionX > 1000 || positionY > 1000)
+	{
+		ResetArrow();
+	}
+	
+}
+function ResetArrow()
+{
+	positionY = 670;
+	positionX = 10;
 }
 
 function EffectOfWind(windDir)
