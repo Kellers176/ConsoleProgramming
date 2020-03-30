@@ -1,72 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+	<style media="screen">
+		body {
+			text-align: center;
+			font-family: sans-serif;
+		}
 
-<head>
-
-	<!--><link rel="stylesheet" href="css/style.css"></-->
-
-	
-    
-
+		canvas {
+			background-color: black;
+		}
+	</style>
 </head>
 
 <body>
-    <div id="canvasesdiv" style="position:absolute; width:800px; height:600px">
-        <canvas id="myCanvas"
-                style="z-index: 1;
-                        position:absolute;
-                        left:0px;
-                        top:0px;
-                        background-image: url('images/environment.jpg');"
-                        height ="800px" 
-                        width ="1000px">
-        </canvas>
-        <canvas id="myBowCanvas"
-                    style="z-index: 2;
-                           position:absolute;
-                           left:0px;
-                           top:0px;
-                           " height="800px" width="1000px">
-        </canvas>
-		<canvas id="myArrowCanvas"
-                    style="z-index: 2;
-                           position:absolute;
-                           left:0px;
-                           top:0px;
-                           " height="800px" width="1000px">
-        </canvas>
-    </div>
-	<script type="text/javascript" src="js/GameBackground.js">
+	<canvas id="myCanvas" width="1000" height="700"></canvas>
+	
+	
+	<script type="text/javascript" src="js/Background.js">
 	</script>
 	<script>
 		RenderAll();
 	</script>
-    <script type="text/javascript" src="js/Target.js">
-	</script>
-	<script>
-		DrawTarget();
-	</script>
-    <script type="text/javascript" src="js/Player.js">
-	</script>
-	<script>
-		DrawCharacter();
-	</script>
-
-	 <script type="text/javascript" src="js/Mouse.js">
+	
+	<script type="text/javascript" src="js/Mouse.js">
 	</script>
 	<script>
 		GetMouseCoords();
+
 	</script>
-         <script type="text/javascript" src="js/Bow.js">
-	</script>
-	<script>
-		RotateCanvas();
-	</script>
-    	<script type="text/javascript" src="js/Arrow.js">
+	<script type="text/javascript" src="js/Bow.js">
 	</script>
 	<script>
-		document.getElementById("myArrowCanvas").onclick = function() {ShootArrow()};
+		//GetMouseCoords();
+
 	</script>
-	
 
 </body></html>
