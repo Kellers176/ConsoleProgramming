@@ -16,7 +16,7 @@ function GetMouseCoords()
 			//console.log('x: ' + e.x + ' y: ' + e.y);			   
 			mousePosX = e.x - buffer;
 			mousePosY = e.y;
-		console.log('x: ' + mousePosX + ' y: ' + mousePosY);
+		//console.log('x: ' + mousePosX + ' y: ' + mousePosY);
         GetAngleOfMouse(mousePosX, mousePosY);
 	});
 	
@@ -27,17 +27,10 @@ function GetAngleOfMouse(x,y)
 {
     //this is not transfering over
     //position of bow
- //   thisAngle = CalculateAngle(10, 670, x, y);
- //   finalAngle = Math.round(thisAngle);
-	//ArrowAngle = finalAngle;
-    console.log('MouseAngle: ' + finalAngle);	
-	ctx.beginPath();
-	ctx.strokeStyle = "#FFFFFF";
-	ctx.fillStyle = "#00FF00";
-	ctx.lineWidth = 2;
-	ctx.moveTo(70, 620);
-	ctx.lineTo(mousePosX , mousePosY);
-	ctx.stroke();
+    thisAngle = CalculateAngle(10, 670, x, y);
+    finalAngle = Math.round(thisAngle);
+	angle = finalAngle;
+    //console.log('MouseAngle: ' + finalAngle);	
 }
 
 function CalculateAngle(cx, cy, ex, ey) {

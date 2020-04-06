@@ -70,15 +70,20 @@ function CountdownTime()
 
 function ChangeScore(newNumber)
 {
-	score = newNumber;
+	score += newNumber;
+	DrawScore();
+	
 }
 //Draw Objects
 //Draw the Score
 function DrawScore() {
+	ctx.clearRect(20, 20, 200, 200);
 	ctx.font = '500 20pt Courier New';
 	ctx.fillStyle = "white";
 	ctx.fillText('Score: ', 20, 40);
 	ctx.fillText(score, 120, 40);
+	console.log("changing score");
+	
 }
 //Draw the time 
 function DrawTime(myTimer) {
