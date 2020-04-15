@@ -11,11 +11,11 @@
 		canvas {
 			background-color: black;
 		}
-
 	</style>
 </head>
 
 <body>
+
 	<canvas id="myCanvas" width="1000" height="700"></canvas>
 
 
@@ -23,36 +23,33 @@
 	</script>
 	<script>
 		RenderAll();
-
 	</script>
-	
+
 	<script type="text/javascript" src="js/Target.js">
 	</script>
 	<script>
 		DrawTarget()
-
 	</script>
 
 	<script type="text/javascript" src="js/Mouse.js">
 	</script>
 	<script>
 		GetMouseCoords();
-
 	</script>
+
 	<script type="text/javascript" src="js/Bow.js">
 	</script>
 	<script>
 		DrawBow()
-
 	</script>
-	
+
 	<script type="text/javascript" src="js/Arrow.js">
 	</script>
 	<script>
-		document.getElementById("myCanvas").onclick = function() {ShootArrow()};
+		document.getElementById("myCanvas").onclick = function() {
+			ShootArrow()
+		};
 		//ShootArrow();
 	</script>
 
-</body>
-
-</html>
+</body></html>

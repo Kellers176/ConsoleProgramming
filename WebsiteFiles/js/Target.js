@@ -13,6 +13,7 @@ Target.radius = 100;
 Target.x = 700;
 Target.y = 550;
 
+
 function DrawTarget()
 {
 	var target = new Image();

@@ -7,6 +7,10 @@ var positionY = 550;
 var radius = 10;
 var colliding = false;
 
+var Arrow = new Object();
+Arrow.x = positionX;
+Arrow.y = positionY;
+
 function DrawArrow() {
 
 	var arrow = new Image();
