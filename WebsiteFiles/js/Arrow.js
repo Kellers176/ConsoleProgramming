@@ -15,21 +15,36 @@ function DrawArrow() {
 
 	var arrow = new Image();
 	arrow.src = "images/arrow.png";
-
+	
 	//draw
 	arrow.onload = function () {
 		ctx2.imageSmoothingEnabled = true;
-		ctx2.drawImage(arrow, 0, 0, 120, 120, positionX, positionY, arrow.width, arrow.height);
-		//ctx2.rotate(40);
+		ctx2.save();
+		ctx2.translate(cx, cy);
+		ctx2.rotate((Math.PI / 180) * angle);
+		ctx2.translate(-cx, -cy);
+		ctx2.drawImage(arrow, 0, 0, 120, 120, Arrow.x, Arrow.y, arrow.width, arrow.height);
+		ctx2.restore();
+
 	}
+}
+
+function ClearArea()
+{
+	ctx2.save();
+		ctx2.translate(cx, cy);
+		ctx2.rotate((Math.PI / 180) * angle);
+		ctx2.translate(-cx, -cy);
+	ctx2.clearRect(Arrow.x, Arrow.y, 150, 150);
+	ctx2.restore();
 }
 
 function ShootArrow() {
 	var temp = setInterval(function ShootArrow() {
 		//document.getElementById('safeTimerDisplay').innerHTML='00:'+sec;
-		positionX = positionX + 5;
+		Arrow.x = Arrow.x + 5;
 		DrawArrow();
-		ctx2.clearRect(positionX, positionY, 120, 120);
+		ClearArea();
 		DrawPlayer();
 		DrawTarget();
 		DrawBow();
@@ -41,6 +56,7 @@ function ShootArrow() {
 			clearInterval(temp);
 			//alert("colliding!");
 		}
+		
 	}, 10);
 
 }
