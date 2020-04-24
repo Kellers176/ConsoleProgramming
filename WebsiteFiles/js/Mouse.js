@@ -16,7 +16,7 @@ function GetMouseCoords()
 			//console.log('x: ' + e.x + ' y: ' + e.y);			   
 			mousePosX = e.x - buffer;
 			mousePosY = e.y;
-		console.log('x: ' + mousePosX + ' y: ' + mousePosY);
+		//console.log('x: ' + mousePosX + ' y: ' + mousePosY);
         GetAngleOfMouse(mousePosX, mousePosY);
 	});
 	
@@ -30,7 +30,7 @@ function GetAngleOfMouse(x,y)
     thisAngle = CalculateAngle(10, 670, x, y);
     finalAngle = Math.round(thisAngle);
 	angle = finalAngle;
-    console.log('MouseAngle: ' + finalAngle);	
+    //console.log('MouseAngle: ' + finalAngle);	
 }
 
 function CalculateAngle(cx, cy, ex, ey) {
