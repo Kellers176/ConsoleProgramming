@@ -12,7 +12,8 @@ function RenderAll() {
 	this.DrawScore();
 	this.CountdownTime();
 	this.DrawPlayer();
-	//this.DrawConstraint();
+
+
 }
 
 function DrawPlayer()

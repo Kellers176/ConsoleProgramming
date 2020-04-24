@@ -20,6 +20,14 @@ function DrawTarget()
 	target.src = "images/target.png";
     target.onload = function () {
         ctx.imageSmoothingEnabled = true;
-        ctx.drawImage(target, 0, 0, width, height, TargetpositionX, TargetpositionY, target.width, target.height);
+        ctx.drawImage(target, 0, 0, width, height, Target.x, Target.y, target.width, target.height);
     }
+}
+
+function Respawn()
+{
+	ctx2.clearRect(Target.x, Target.y, 120, 120);
+	Target.x = Math.floor(Math.random() * 700) + 50;
+	Target.y = Math.floor(Math.random() * 600) ;
+	
 }

@@ -38,7 +38,7 @@ function ClearArea()
 		ctx2.translate(cx, cy);
 		ctx2.rotate((Math.PI / 180) * arrowAngle);
 		ctx2.translate(-cx, -cy);
-	ctx2.clearRect(Arrow.x, Arrow.y, 100, 100);
+	ctx2.clearRect(Arrow.x, Arrow.y, 120, 120);
 	ctx2.restore();
 }
 
@@ -52,15 +52,14 @@ function ShootArrow() {
 		DrawPlayer();
 		DrawTarget();
 		DrawBow();
+		CreateRoundedRectangle();
 		CheckCollision();
 		//console.log(colliding);
 		if (colliding) {
 			ChangeScore(10);
-			console.log(colliding);
-			colliding = false;
 			ResetArrow();
 			clearInterval(temp);
-			
+			console.log(colliding);
 		}
 		
 	}, 10);
@@ -73,6 +72,7 @@ function ResetArrow()
 	Arrow.x = positionX;
 	Arrow.y = positionY;	
 	colliding = false;
+	Respawn();
 }
 
 function CheckCollision() {
@@ -86,8 +86,9 @@ function collision(obj1, obj2) {
 	var totalRadius = (obj1.radius + obj2.radius);
 	console.log(totalRadius);
 	
+	distance = Math.sqrt(Math.pow(obj1.x - obj2.x, 2));
 	
-	if (distance < 100) {
+	if (distance < 20) {
 		colliding = true;
 		return true;
 	} else {
